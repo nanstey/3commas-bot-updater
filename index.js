@@ -9,12 +9,18 @@ const updateGeckotrend = require("./geckotrend");
 const app = express();
 const api = new API();
 
+app.listen(3000);
+console.log("App starting ...");
+
+if (process.env.DEBUG) {
+  run();
+}
+
 //Schedule tasks to be run on the server every 12 hours
 cron.schedule("0 */12 * * *", async function () {
   run();
 });
 
-app.listen(3000);
 
 async function run() {
   await updateGeckotrend(api);
