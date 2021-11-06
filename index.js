@@ -9,8 +9,9 @@ const updateGeckotrend = require("./geckotrend");
 const app = express();
 const api = new API();
 
-app.listen(3000);
-console.log("App starting ...");
+const port = process.env.PORT || 5000;
+app.listen(port);
+console.log(`App listening on port: ${port}`);
 
 if (process.env.DEBUG) {
   run();
